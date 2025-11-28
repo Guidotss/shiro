@@ -1,0 +1,25 @@
+# Node
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+dist/
+
+# Nx
+.nx/cache/
+.nx/workspace.json
+
+# Logs
+*.log
+
+# Env
+.env
+.env.*
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

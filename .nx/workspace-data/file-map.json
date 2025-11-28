@@ -1,0 +1,182 @@
+{
+  "version": "6.0",
+  "nxVersion": "19.8.14",
+  "deps": {
+    "@eslint/js": "^9.8.0",
+    "@nrwl/js": "19.8.14",
+    "@nx/eslint": "19.8.14",
+    "@nx/eslint-plugin": "19.8.14",
+    "@nx/js": "19.8.14",
+    "@nx/vite": "19.8.14",
+    "@nx/web": "19.8.14",
+    "@swc-node/register": "~1.9.1",
+    "@swc/core": "~1.5.7",
+    "@swc/helpers": "~0.5.11",
+    "@types/node": "^20.0.0",
+    "@vitest/coverage-v8": "^1.0.4",
+    "@vitest/ui": "^1.3.1",
+    "eslint": "^9.8.0",
+    "eslint-config-prettier": "^9.0.0",
+    "nx": "19.8.14",
+    "prettier": "^2.6.2",
+    "rimraf": "^5.0.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^5.0.0",
+    "vitepress": "^1.2.0",
+    "vitest": "^1.3.1"
+  },
+  "pathMappings": {
+    "@shiro/app": [
+      "packages/app/src"
+    ],
+    "@shiro/core": [
+      "packages/core/src"
+    ],
+    "@shiro/router": [
+      "packages/router/src"
+    ],
+    "@shiro/utils": [
+      "packages/utils/src"
+    ],
+    "core": [
+      "packages/core/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "6150581296451460699"
+      },
+      {
+        "file": "dist/core/index.js",
+        "hash": "3440872399486922093"
+      },
+      {
+        "file": "nx.json",
+        "hash": "4939549243037212073"
+      },
+      {
+        "file": "dist/core/index.d.ts",
+        "hash": "9492361855573897495"
+      },
+      {
+        "file": "vitest.workspace.ts",
+        "hash": "7870362608836821141"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "2478217381773231556"
+      },
+      {
+        "file": "dist/core/lib/core.spec.d.ts",
+        "hash": "4595979742548113990"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "17284711007348252231"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "2979412107645024674"
+      },
+      {
+        "file": "dist/core/lib/core.d.ts",
+        "hash": "18340943999127286595"
+      },
+      {
+        "file": "dist/core/lib/core.spec.js",
+        "hash": "2347441975632809210"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "10264894305111076770"
+      },
+      {
+        "file": "package.json",
+        "hash": "13624663922244301252"
+      },
+      {
+        "file": "dist/core/lib/core.js",
+        "hash": "7973401338446874218"
+      },
+      {
+        "file": "dist/tsconfig.tsbuildinfo",
+        "hash": "214635762612416004"
+      }
+    ],
+    "projectFileMap": {
+      "core": [
+        {
+          "file": "packages/core/README.md",
+          "hash": "4369172407730148539"
+        },
+        {
+          "file": "packages/core/eslint.config.js",
+          "hash": "1025367224770806341",
+          "deps": [
+            "npm:jsonc-eslint-parser"
+          ]
+        },
+        {
+          "file": "packages/core/package.json",
+          "hash": "14558091253619359083"
+        },
+        {
+          "file": "packages/core/project.json",
+          "hash": "12935778967897716151"
+        },
+        {
+          "file": "packages/core/src/index.ts",
+          "hash": "9492361855573897495"
+        },
+        {
+          "file": "packages/core/src/lib/core.spec.ts",
+          "hash": "3658659510497139392"
+        },
+        {
+          "file": "packages/core/src/lib/core.ts",
+          "hash": "14885622587354129707"
+        },
+        {
+          "file": "packages/core/tsconfig.json",
+          "hash": "10974101335357641739"
+        },
+        {
+          "file": "packages/core/tsconfig.lib.json",
+          "hash": "17833041087370483432"
+        },
+        {
+          "file": "packages/core/tsconfig.spec.json",
+          "hash": "15943385144407153049"
+        },
+        {
+          "file": "packages/core/vite.config.ts",
+          "hash": "3798511151950971042",
+          "deps": [
+            "npm:vite",
+            "npm:@nx/vite"
+          ]
+        }
+      ]
+    }
+  }
+}
