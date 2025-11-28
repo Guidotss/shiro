@@ -13,6 +13,8 @@ export interface TcpServerOptions {
 export class TcpServer {
   private server: net.Server;
   private parser = new HttpParser();
+  private buffers = new WeakMap<Socket, Buffer>();
+
   private handler: ShiroRequestHandler = (req, res) => {
     res.json({
       framework: 'Shiro',
@@ -38,37 +40,41 @@ export class TcpServer {
     this.server.close(callback);
   }
 
-  private handleConnection(socket: Socket): void {
-    socket.on('data', (chunk) => {
-      const parsed = this.parser.parse(chunk);
+  private handleConnection(socket: Socket) {
+    this.buffers.set(socket, Buffer.alloc(0));
+  
+    socket.on("data", (chunk) => {
+      const current = this.buffers.get(socket) || Buffer.alloc(0);
+      const newBuffer = Buffer.concat([current, chunk]);
+  
+      const parsed = this.parser.parse(newBuffer);
+  
       if (!parsed) {
-        // [GO] -> v1: se ignora el request incompleto
+        // [GO] -> v1: se actualiza el buffer y se espera el request completo
+        this.buffers.set(socket, newBuffer);
         return;
       }
-
+  
+      this.buffers.set(socket, Buffer.alloc(0));
+  
       const req = new HttpRequest(
         parsed.method,
         parsed.path,
         parsed.headers,
         parsed.body
       );
+  
       const res = new HttpResponse(socket);
-
+  
       try {
         this.handler(req, res);
       } catch (err) {
-        console.error('Error in request handler:', err);
+        console.error("Handler error:", err);
         if (!socket.destroyed) {
-          res.status(500).json({ error: 'Internal Server Error' });
+          res.status(500).json({ error: "Internal Server Error" });
         }
       }
     });
-
-    socket.on('error', (err) => {
-      console.error('Socket error:', err);
-      if (!socket.destroyed) {
-        socket.destroy();
-      }
-    });
   }
+  
 }
