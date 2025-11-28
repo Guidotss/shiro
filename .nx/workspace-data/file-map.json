@@ -55,40 +55,48 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "nx.json",
-        "hash": "4939549243037212073"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "9815125132413938939"
-      },
-      {
         "file": "pnpm-lock.yaml",
         "hash": "10264894305111076770"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "2478217381773231556"
       },
       {
         "file": "vitest.workspace.ts",
         "hash": "7870362608836821141"
       },
       {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
+        "file": "examples/basic-server/src/index.ts",
+        "hash": "7236854728762201271"
       },
       {
-        "file": "package.json",
-        "hash": "13624663922244301252"
+        "file": "nx.json",
+        "hash": "4939549243037212073"
       },
       {
         "file": "tsconfig.base.json",
         "hash": "2979412107645024674"
       },
       {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
+        "file": "examples/basic-server/tsconfig.json",
+        "hash": "11671316131189098704"
       },
       {
-        "file": "eslint.config.js",
-        "hash": "2478217381773231556"
+        "file": ".gitignore",
+        "hash": "9815125132413938939"
+      },
+      {
+        "file": "package.json",
+        "hash": "10301876856202519355"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
       },
       {
         "file": "pnpm-workspace.yaml",
