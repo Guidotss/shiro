@@ -9146,6 +9146,11 @@
       "type": "static"
     },
     {
+      "source": "npm:@nrwl/js",
+      "target": "npm:@nx/js",
+      "type": "static"
+    },
+    {
       "source": "npm:@nrwl/tao",
       "target": "npm:nx",
       "type": "static"

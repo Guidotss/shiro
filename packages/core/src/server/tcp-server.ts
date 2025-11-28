@@ -39,42 +39,69 @@ export class TcpServer {
   close(callback?: (err?: Error) => void): void {
     this.server.close(callback);
   }
-
-  private handleConnection(socket: Socket) {
+  private handleConnection(socket: Socket): void {
     this.buffers.set(socket, Buffer.alloc(0));
-  
-    socket.on("data", (chunk) => {
-      const current = this.buffers.get(socket) || Buffer.alloc(0);
-      const newBuffer = Buffer.concat([current, chunk]);
-  
-      const parsed = this.parser.parse(newBuffer);
-  
-      if (!parsed) {
-        // [GO] -> v1: se actualiza el buffer y se espera el request completo
-        this.buffers.set(socket, newBuffer);
-        return;
-      }
-  
-      this.buffers.set(socket, Buffer.alloc(0));
-  
-      const req = new HttpRequest(
-        parsed.method,
-        parsed.path,
-        parsed.headers,
-        parsed.body
-      );
-  
-      const res = new HttpResponse(socket);
-  
-      try {
-        this.handler(req, res);
-      } catch (err) {
-        console.error("Handler error:", err);
-        if (!socket.destroyed) {
-          res.status(500).json({ error: "Internal Server Error" });
+
+    let isProcessing = false;
+
+    socket.on('data', async (chunk) => {
+      let buffer = Buffer.concat([this.buffers.get(socket)!, chunk]);
+
+      while (true) {
+        const parsed = this.parser.parse(buffer);
+
+        if (!parsed) {
+          this.buffers.set(socket, buffer);
+          return;
         }
+
+        const raw = buffer.toString('utf-8');
+        const headerEnd = raw.indexOf('\r\n\r\n');
+        const bodyStart = headerEnd + 4;
+
+        const contentLength = parsed.headers['content-length']
+          ? parseInt(parsed.headers['content-length'], 10)
+          : 0;
+
+        const fullLength = bodyStart + contentLength;
+
+        const remaining = buffer.subarray(fullLength);
+        this.buffers.set(socket, remaining);
+        buffer = remaining;
+
+        if (isProcessing) continue;
+        isProcessing = true;
+
+        const req = new HttpRequest(
+          parsed.method,
+          parsed.path,
+          parsed.headers,
+          parsed.body
+        );
+
+        const wantsKeepAlive =
+          req.getHeader('connection')?.toLowerCase() === 'keep-alive';
+
+        const res = new HttpResponse(socket, wantsKeepAlive);
+
+        try {
+          await this.handler(req, res);
+        } catch (err) {
+          console.error('[Shiro] Handler error:', err);
+          if (!socket.destroyed) {
+            res.status(500).json({ error: 'Internal Server Error' });
+          }
+        }
+
+        isProcessing = false;
+
+        if (buffer.length === 0) return;
       }
     });
+
+    socket.on('error', (err) => {
+      console.error('[Shiro] Socket error:', err);
+      socket.destroy();
+    });
   }
-  
 }

@@ -7,7 +7,10 @@ export class HttpResponse {
   };
   private ended = false;
 
-  constructor(private readonly socket: Socket) {}
+  constructor(
+    private readonly socket: Socket,
+    private readonly keepAlive: boolean
+  ) {}
 
   status(code: number): this {
     this.statusCode = code;
@@ -19,16 +22,7 @@ export class HttpResponse {
     return this;
   }
 
-  private writeHead() {
-    let head = `HTTP/1.1 ${this.statusCode} ${this.getStatusText()}\r\n`;
-    for (const [k, v] of Object.entries(this.headers)) {
-      head += `${k}: ${v}\r\n`;
-    }
-    head += `\r\n`;
-    this.socket.write(head);
-  }
-
-  private getStatusText(): string {
+  private statusText(): string {
     switch (this.statusCode) {
       case 200:
         return 'OK';
@@ -45,28 +39,33 @@ export class HttpResponse {
     }
   }
 
+  private writeHead(): void {
+    this.headers['Connection'] = this.keepAlive ? 'keep-alive' : 'close';
+
+    let head = `HTTP/1.1 ${this.statusCode} ${this.statusText()}\r\n`;
+
+    for (const [k, v] of Object.entries(this.headers)) {
+      head += `${k}: ${v}\r\n`;
+    }
+
+    head += `\r\n`;
+    this.socket.write(head);
+  }
+
   send(body: string): void {
     if (this.ended) return;
 
-    const length = Buffer.byteLength(body);
-    this.headers['Content-Length'] = String(length);
+    this.headers['Content-Length'] = Buffer.byteLength(body).toString();
 
     this.writeHead();
     this.socket.write(body);
-    this.socket.end();
+
+    if (!this.keepAlive) this.socket.end();
     this.ended = true;
   }
 
   json(data: unknown): void {
-    const body = JSON.stringify(data);
     this.setHeader('Content-Type', 'application/json; charset=utf-8');
-    this.send(body);
-  }
-
-  end(): void {
-    if (this.ended) return;
-    this.writeHead();
-    this.socket.end();
-    this.ended = true;
+    this.send(JSON.stringify(data));
   }
 }

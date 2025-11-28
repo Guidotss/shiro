@@ -21,6 +21,7 @@
     "prettier": "^2.6.2",
     "rimraf": "^5.0.0",
     "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.0.0",
     "typescript-eslint": "^8.0.0",
     "vite": "^5.0.0",
@@ -55,52 +56,56 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "pnpm-lock.yaml",
-        "hash": "10264894305111076770"
-      },
-      {
-        "file": "eslint.config.js",
-        "hash": "2478217381773231556"
-      },
-      {
-        "file": "vitest.workspace.ts",
-        "hash": "7870362608836821141"
-      },
-      {
-        "file": "examples/basic-server/src/index.ts",
-        "hash": "7236854728762201271"
-      },
-      {
-        "file": "nx.json",
-        "hash": "4939549243037212073"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "2979412107645024674"
-      },
-      {
-        "file": "examples/basic-server/tsconfig.json",
-        "hash": "11671316131189098704"
-      },
-      {
         "file": ".gitignore",
         "hash": "9815125132413938939"
-      },
-      {
-        "file": "package.json",
-        "hash": "10301876856202519355"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
       },
       {
         "file": ".prettierignore",
         "hash": "14688272390704683536"
       },
       {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "2478217381773231556"
+      },
+      {
+        "file": "examples/basic-server/src/index.ts",
+        "hash": "16100973245915769860"
+      },
+      {
+        "file": "examples/basic-server/tsconfig.json",
+        "hash": "11671316131189098704"
+      },
+      {
+        "file": "nx.json",
+        "hash": "4939549243037212073"
+      },
+      {
+        "file": "package.json",
+        "hash": "6523212783985064929"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "17081162777295013561"
+      },
+      {
         "file": "pnpm-workspace.yaml",
         "hash": "6150581296451460699"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "2979412107645024674"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "16550755334781357375"
+      },
+      {
+        "file": "vitest.workspace.ts",
+        "hash": "7870362608836821141"
       }
     ],
     "projectFileMap": {
@@ -126,7 +131,7 @@
         },
         {
           "file": "packages/core/src/http/http-parser.ts",
-          "hash": "12357513999207732146"
+          "hash": "14404533747028649436"
         },
         {
           "file": "packages/core/src/http/http-request.ts",
@@ -134,7 +139,7 @@
         },
         {
           "file": "packages/core/src/http/http-response.ts",
-          "hash": "2651134818707521481"
+          "hash": "12299700351933571715"
         },
         {
           "file": "packages/core/src/http/http-types.ts",
@@ -150,7 +155,7 @@
         },
         {
           "file": "packages/core/src/server/tcp-server.ts",
-          "hash": "16510831569648802576"
+          "hash": "8902724710920953375"
         },
         {
           "file": "packages/core/tsconfig.json",
