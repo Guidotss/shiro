@@ -55,72 +55,44 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
-      },
-      {
-        "file": "pnpm-workspace.yaml",
-        "hash": "6150581296451460699"
-      },
-      {
-        "file": "dist/core/index.js",
-        "hash": "3440872399486922093"
-      },
-      {
         "file": "nx.json",
         "hash": "4939549243037212073"
       },
       {
-        "file": "dist/core/index.d.ts",
-        "hash": "9492361855573897495"
-      },
-      {
-        "file": "vitest.workspace.ts",
-        "hash": "7870362608836821141"
-      },
-      {
-        "file": "eslint.config.js",
-        "hash": "2478217381773231556"
-      },
-      {
-        "file": "dist/core/lib/core.spec.d.ts",
-        "hash": "4595979742548113990"
-      },
-      {
         "file": ".gitignore",
-        "hash": "17284711007348252231"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "2979412107645024674"
-      },
-      {
-        "file": "dist/core/lib/core.d.ts",
-        "hash": "18340943999127286595"
-      },
-      {
-        "file": "dist/core/lib/core.spec.js",
-        "hash": "2347441975632809210"
+        "hash": "9815125132413938939"
       },
       {
         "file": "pnpm-lock.yaml",
         "hash": "10264894305111076770"
       },
       {
+        "file": "vitest.workspace.ts",
+        "hash": "7870362608836821141"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
         "file": "package.json",
         "hash": "13624663922244301252"
       },
       {
-        "file": "dist/core/lib/core.js",
-        "hash": "7973401338446874218"
+        "file": "tsconfig.base.json",
+        "hash": "2979412107645024674"
       },
       {
-        "file": "dist/tsconfig.tsbuildinfo",
-        "hash": "214635762612416004"
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": "eslint.config.js",
+        "hash": "2478217381773231556"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "6150581296451460699"
       }
     ],
     "projectFileMap": {
@@ -145,16 +117,32 @@
           "hash": "12935778967897716151"
         },
         {
+          "file": "packages/core/src/http/http-parser.ts",
+          "hash": "12357513999207732146"
+        },
+        {
+          "file": "packages/core/src/http/http-request.ts",
+          "hash": "15634869652187838650"
+        },
+        {
+          "file": "packages/core/src/http/http-response.ts",
+          "hash": "2651134818707521481"
+        },
+        {
+          "file": "packages/core/src/http/http-types.ts",
+          "hash": "18262216057407212616"
+        },
+        {
           "file": "packages/core/src/index.ts",
-          "hash": "9492361855573897495"
+          "hash": "13162366936789502313"
         },
         {
-          "file": "packages/core/src/lib/core.spec.ts",
-          "hash": "3658659510497139392"
+          "file": "packages/core/src/server/index.ts",
+          "hash": "11760810803788416629"
         },
         {
-          "file": "packages/core/src/lib/core.ts",
-          "hash": "14885622587354129707"
+          "file": "packages/core/src/server/tcp-server.ts",
+          "hash": "16510831569648802576"
         },
         {
           "file": "packages/core/tsconfig.json",
